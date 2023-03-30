@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "okflix-mobile",
+    "slug": "okflix-mobile"
+  }
+}
