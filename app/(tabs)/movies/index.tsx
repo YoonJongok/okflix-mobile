@@ -1,26 +1,9 @@
 import SwiperFlatList from "react-native-swiper-flatlist";
-import {
-	Votes,
-	Overview,
-	Column,
-	Wrapper,
-	Title,
-	BgImg,
-	Loader,
-	View,
-	Container,
-	Poster,
-} from "./movies.styled";
-import {
-	ActivityIndicator,
-	Dimensions,
-	StyleSheet,
-	useColorScheme,
-} from "react-native";
+import { Loader, Container } from "./movies.styled";
+import { ActivityIndicator, Dimensions, useColorScheme } from "react-native";
 import { useEffect, useState } from "react";
-import { makeImgPath } from "../../../libs/makeImgPath";
-import { BlurView } from "expo-blur";
 import { Stack } from "expo-router";
+import Slide from "../../components/Slide";
 
 const API_KEY = "f2d97896a7b8f93a3b0c012fd1cfdefc";
 
@@ -93,37 +76,3 @@ const Movies = () => {
 };
 
 export default Movies;
-
-interface SlideProps {
-	nowPlaying: Movie;
-}
-
-const Slide = ({ nowPlaying }: SlideProps) => {
-	const isDark = useColorScheme() === "dark";
-	return (
-		<View key={nowPlaying.id}>
-			<BgImg
-				style={StyleSheet.absoluteFill}
-				source={{ uri: makeImgPath(nowPlaying.backdrop_path) }}
-			/>
-			<BlurView
-				tint={isDark ? "dark" : "light"}
-				intensity={85}
-				style={StyleSheet.absoluteFill}
-			>
-				<Wrapper>
-					<Poster source={{ uri: makeImgPath(nowPlaying.poster_path) }} />
-					<Column>
-						<Title isDark={isDark}>{nowPlaying.original_title}</Title>
-						{nowPlaying.vote_average > 0 && (
-							<Votes isDark={isDark}>⭐️ {nowPlaying.vote_average}/10</Votes>
-						)}
-						<Overview isDark={isDark}>
-							{nowPlaying.overview.slice(0, 100)}...
-						</Overview>
-					</Column>
-				</Wrapper>
-			</BlurView>
-		</View>
-	);
-};
