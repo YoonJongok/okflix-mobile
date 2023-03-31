@@ -1,6 +1,10 @@
 {
-	"compilerOptions": {
-		"types": ["styled-components-react-native"]
-	},
+	"compilerOptions": {},
+	"exclude": [
+		"node_modules",
+		"babel.config.js",
+		"metro.config.js",
+		"jest.config.js"
+	],
 	"extends": "expo/tsconfig.base"
 }

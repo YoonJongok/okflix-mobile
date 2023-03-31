@@ -15,7 +15,7 @@ export default function IndexLayout() {
 	if (!fontsLoaded) return <SplashScreen />;
 
 	return (
-		<ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+		<ThemeProvider theme={darkTheme}>
 			<Stack
 				screenOptions={{
 					headerShown: false,

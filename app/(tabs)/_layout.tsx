@@ -2,8 +2,10 @@ import { Tabs } from "expo-router";
 import { useColorScheme } from "react-native";
 import { themeColors } from "../../theme";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { SwiperFlatList } from "react-native-swiper-flatlist";
+import React from "react";
 
-export default function TabsLayout() {
+const TabsLayout: React.FC = () => {
 	const isDark = useColorScheme() === "dark";
 	return (
 		<Tabs
@@ -38,10 +40,15 @@ export default function TabsLayout() {
 					return <FontAwesome5 name={iconName} size={size} color={color} />;
 				},
 			})}
+			sceneContainerStyle={{
+				backgroundColor: isDark ? themeColors.black : "white",
+			}}
 		>
 			<Tabs.Screen name="movies" options={{ title: "Movies" }} />
 			<Tabs.Screen name="tv" options={{ title: "TV" }} />
 			<Tabs.Screen name="search" options={{ title: "Search" }} />
 		</Tabs>
 	);
-}
+};
+
+export default TabsLayout;
