@@ -1,21 +1,21 @@
 import { StyleSheet } from "react-native";
-import { Movie } from "../../(tabs)/movies";
 import { useColorScheme } from "react-native";
-import { makeImgPath } from "../../../libs/makeImgPath";
+import { makeImgPath } from "../../libs/makeImgPath";
 import { BlurView } from "expo-blur";
 import {
 	BgImg,
 	Column,
 	Overview,
-	Poster,
 	Title,
 	Votes,
 	Wrapper,
 	_View,
 } from "./Slide.styled";
+import Poster from "../Poster";
+import { MovieType } from "../../app/(tabs)/movies/movies.types";
 
 interface SlideProps {
-	nowPlaying: Movie;
+	nowPlaying: MovieType;
 }
 
 const Slide = ({ nowPlaying }: SlideProps) => {
@@ -32,7 +32,7 @@ const Slide = ({ nowPlaying }: SlideProps) => {
 				style={StyleSheet.absoluteFill}
 			>
 				<Wrapper>
-					<Poster source={{ uri: makeImgPath(nowPlaying.poster_path) }} />
+					<Poster path={makeImgPath(nowPlaying.poster_path)} />
 					<Column>
 						<Title isDark={isDark}>{nowPlaying.original_title}</Title>
 						{nowPlaying.vote_average > 0 && (

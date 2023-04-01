@@ -40,9 +40,3 @@ export const Overview = styled.Text<{ isDark: boolean }>`
 export const Votes = styled(Overview)`
 	font-size: 12px;
 `;
-
-export const Poster = styled.Image`
-	width: 100px;
-	height: 160px;
-	border-radius: 5px;
-`;
